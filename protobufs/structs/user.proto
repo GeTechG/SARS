@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package structs;
+
+message User {
+  string uid = 1;
+  string user_type = 2;
+  string cn = 3;
+}
