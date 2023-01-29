@@ -1,0 +1,111 @@
+{"level":"info","ts":1674938282.4914787,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:%s9001"}
+{"level":"info","ts":1674938297.4791956,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674938302.125249,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674941070.3169239,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674941235.8801496,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674942469.9163506,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674943203.651261,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674944089.1546392,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674944213.0927641,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674944234.4659688,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T03:17:14+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":14.096}
+{"level":"warn","ts":1674944458.8886845,"caller":"zap/options.go:212","msg":"finished unary call with code Aborted","grpc.start_time":"2023-01-29T03:20:32+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","error":"rpc error: code = Aborted desc = unable to read LDAP response packet: read tcp 10.4.3.54:55476->10.3.0.9:389: read: connection timed out","grpc.code":"Aborted","grpc.time_ms":26603.344}
+{"level":"warn","ts":1674944513.6828191,"caller":"zap/options.go:212","msg":"finished unary call with code Aborted","grpc.start_time":"2023-01-29T03:21:53+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","error":"rpc error: code = Aborted desc = LDAP Result Code 200 \"Network Error\": ldap: connection closed","grpc.code":"Aborted","grpc.time_ms":0.157}
+{"level":"info","ts":1674944528.0086813,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674944531.4964027,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674944581.0278442,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674944585.9431865,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674944589.4546728,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T03:23:09+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":8.889}
+{"level":"info","ts":1674944612.449182,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674944652.8362796,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674944660.6337743,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T03:24:20+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":57.649}
+{"level":"warn","ts":1674945493.3806534,"caller":"zap/options.go:212","msg":"finished unary call with code Aborted","grpc.start_time":"2023-01-29T03:36:22+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","error":"rpc error: code = Aborted desc = unable to read LDAP response packet: read tcp 10.4.3.54:33338->10.3.0.9:389: read: connection timed out","grpc.code":"Aborted","grpc.time_ms":110478.3}
+{"level":"warn","ts":1674945981.1217837,"caller":"zap/options.go:212","msg":"finished unary call with code Aborted","grpc.start_time":"2023-01-29T03:46:21+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","error":"rpc error: code = Aborted desc = LDAP Result Code 200 \"Network Error\": ldap: connection closed","grpc.code":"Aborted","grpc.time_ms":0.087}
+{"level":"info","ts":1674946447.8841836,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674946476.6441429,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674946492.3806558,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T03:54:52+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":10.63}
+{"level":"info","ts":1674946942.1158025,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674947178.9255264,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674947183.3672752,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T04:06:23+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":22.452}
+{"level":"info","ts":1674974819.4541328,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674974964.469118,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T11:49:24+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":10.721}
+{"level":"info","ts":1674975390.3047,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674975396.605844,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T11:56:36+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":43.964}
+{"level":"info","ts":1674975452.6249661,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674975455.946825,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"debug","ts":1674975473.923588,"caller":"ldap/user.go:10","msg":"Prebind"}
+{"level":"debug","ts":1674975473.932253,"caller":"ldap/user.go:12","msg":"Afterind"}
+{"level":"info","ts":1674975473.943677,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T11:57:53+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":20.137}
+{"level":"info","ts":1674975513.3237596,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674975518.6439145,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"debug","ts":1674975531.4387903,"caller":"ldap/user.go:10","msg":"Prebind"}
+{"level":"debug","ts":1674975531.4443958,"caller":"ldap/user.go:12","msg":"Afterind"}
+{"level":"debug","ts":1674975531.4445748,"caller":"ldap/user.go:27","msg":"Prerequest"}
+{"level":"debug","ts":1674975531.4517698,"caller":"ldap/user.go:29","msg":"Afterrequest"}
+{"level":"info","ts":1674975531.4557846,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T11:58:51+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":17.045}
+{"level":"debug","ts":1674975543.995406,"caller":"ldap/user.go:10","msg":"Prebind"}
+{"level":"info","ts":1674976508.9571106,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"debug","ts":1674976521.1721716,"caller":"ldap/user.go:14","msg":"Prebind"}
+{"level":"debug","ts":1674976521.178231,"caller":"ldap/user.go:40","msg":"Afterind"}
+{"level":"debug","ts":1674976521.1800847,"caller":"ldap/user.go:53","msg":"Prerequest"}
+{"level":"debug","ts":1674976521.1875935,"caller":"ldap/user.go:55","msg":"Afterrequest"}
+{"level":"info","ts":1674976521.1883197,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T12:15:21+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":16.224}
+{"level":"debug","ts":1674976533.445457,"caller":"ldap/user.go:14","msg":"Prebind"}
+{"level":"info","ts":1674976774.4415953,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"debug","ts":1674976791.0446455,"caller":"ldap/user.go:14","msg":"Prebind"}
+{"level":"debug","ts":1674976791.052069,"caller":"ldap/user.go:40","msg":"Afterind"}
+{"level":"debug","ts":1674976791.0523002,"caller":"ldap/user.go:53","msg":"Prerequest"}
+{"level":"debug","ts":1674976791.059486,"caller":"ldap/user.go:55","msg":"Afterrequest"}
+{"level":"info","ts":1674976791.0608258,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T12:19:51+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":15.847}
+{"level":"debug","ts":1674976795.7816405,"caller":"ldap/user.go:14","msg":"Prebind"}
+{"level":"warn","ts":1674977738.7304401,"caller":"zap/options.go:212","msg":"finished unary call with code Aborted","grpc.start_time":"2023-01-29T12:19:55+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","error":"rpc error: code = Aborted desc = unable to read LDAP response packet: read tcp 10.4.3.54:53742->10.3.0.9:389: read: connection timed out","grpc.code":"Aborted","grpc.time_ms":942948.9}
+{"level":"info","ts":1674980027.5366457,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674980047.280518,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"debug","ts":1674980065.2949202,"caller":"ldap/user.go:14","msg":"Prebind"}
+{"level":"debug","ts":1674980065.3005548,"caller":"ldap/user.go:40","msg":"Afterind"}
+{"level":"debug","ts":1674980065.3008718,"caller":"ldap/user.go:53","msg":"Prerequest"}
+{"level":"debug","ts":1674980065.3102136,"caller":"ldap/user.go:55","msg":"Afterrequest"}
+{"level":"info","ts":1674980065.3108327,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T13:14:25+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":15.981}
+{"level":"debug","ts":1674980080.3063116,"caller":"ldap/user.go:14","msg":"Prebind"}
+{"level":"warn","ts":1674980081.3078835,"caller":"zap/options.go:212","msg":"finished unary call with code Aborted","grpc.start_time":"2023-01-29T13:14:40+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","error":"rpc error: code = Aborted desc = context deadline exceeded","grpc.code":"Aborted","grpc.time_ms":1001.616}
+{"level":"info","ts":1674980103.5498323,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674980127.510827,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"debug","ts":1674980141.691063,"caller":"ldap/user.go:14","msg":"Prebind"}
+{"level":"debug","ts":1674980141.7850366,"caller":"ldap/user.go:40","msg":"Afterind"}
+{"level":"debug","ts":1674980141.7856953,"caller":"ldap/user.go:53","msg":"Prerequest"}
+{"level":"debug","ts":1674980141.827914,"caller":"ldap/user.go:55","msg":"Afterrequest"}
+{"level":"info","ts":1674980141.828762,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T13:15:41+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":137.773}
+{"level":"debug","ts":1674980158.5086665,"caller":"ldap/user.go:14","msg":"Prebind"}
+{"level":"warn","ts":1674980188.5381985,"caller":"zap/options.go:212","msg":"finished unary call with code Aborted","grpc.start_time":"2023-01-29T13:15:58+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","error":"rpc error: code = Aborted desc = context deadline exceeded","grpc.code":"Aborted","grpc.time_ms":30029.566}
+{"level":"info","ts":1674981685.7682776,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"panic","ts":1674981694.7561762,"caller":"app/main.go:34","msg":"LDAP Result Code 200 \"Network Error\": dial tcp: lookup ldap.it-college.ru: no such host","stacktrace":"main.main\n\t/home/sergey/Documents/SARS/ldap_service/cmd/app/main.go:34\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:250"}
+{"level":"info","ts":1674981701.0783894,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"debug","ts":1674981823.5621746,"caller":"ldap/user.go:36","msg":"Prerequest"}
+{"level":"debug","ts":1674981823.5690775,"caller":"ldap/user.go:38","msg":"Afterrequest"}
+{"level":"info","ts":1674981823.5725417,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T13:43:43+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":18.045}
+{"level":"panic","ts":1674982051.2255418,"caller":"app/main.go:34","msg":"LDAP Result Code 200 \"Network Error\": dial tcp: lookup ldap.it-college.ru: no such host","stacktrace":"main.main\n\t/home/sergey/Documents/SARS/ldap_service/cmd/app/main.go:34\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:250"}
+{"level":"info","ts":1674982077.0562766,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"debug","ts":1674982083.3932178,"caller":"ldap/user.go:36","msg":"Prerequest"}
+{"level":"debug","ts":1674982083.4009817,"caller":"ldap/user.go:38","msg":"Afterrequest"}
+{"level":"info","ts":1674982083.4017797,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T13:48:03+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":16.259}
+{"level":"panic","ts":1674982151.4821894,"caller":"ldap/init.go:40","msg":"connected LDAP is dead","stacktrace":"git.it-college.ru/i21s617/SARS/ldap_service/internal/ldap.(*Service).requestWrapper\n\t/home/sergey/Documents/SARS/ldap_service/internal/ldap/init.go:40\ngit.it-college.ru/i21s617/SARS/ldap_service/internal/ldap.(*Service).GetUser\n\t/home/sergey/Documents/SARS/ldap_service/internal/ldap/user.go:13\ngit.it-college.ru/i21s617/SARS/ldap_service/internal/services.(*UserService).GetUser\n\t/home/sergey/Documents/SARS/ldap_service/internal/services/user.go:19\ngit.it-college.ru/i21s617/SARS/ldap_service/internal/proto/ldap._UserService_GetUser_Handler.func1\n\t/home/sergey/Documents/SARS/ldap_service/internal/proto/ldap/ldap_grpc.pb.go:86\ngithub.com/grpc-ecosystem/go-grpc-middleware/logging/zap.UnaryServerInterceptor.func1\n\t/home/sergey/go/pkg/mod/github.com/grpc-ecosystem/go-grpc-middleware@v1.3.0/logging/zap/server_interceptors.go:31\ngithub.com/grpc-ecosystem/go-grpc-middleware.ChainUnaryServer.func1.1.1\n\t/home/sergey/go/pkg/mod/github.com/grpc-ecosystem/go-grpc-middleware@v1.3.0/chain.go:25\ngithub.com/grpc-ecosystem/go-grpc-middleware.ChainUnaryServer.func1\n\t/home/sergey/go/pkg/mod/github.com/grpc-ecosystem/go-grpc-middleware@v1.3.0/chain.go:34\ngit.it-college.ru/i21s617/SARS/ldap_service/internal/proto/ldap._UserService_GetUser_Handler\n\t/home/sergey/Documents/SARS/ldap_service/internal/proto/ldap/ldap_grpc.pb.go:88\ngoogle.golang.org/grpc.(*Server).processUnaryRPC\n\t/home/sergey/go/pkg/mod/google.golang.org/grpc@v1.52.3/server.go:1336\ngoogle.golang.org/grpc.(*Server).handleStream\n\t/home/sergey/go/pkg/mod/google.golang.org/grpc@v1.52.3/server.go:1704\ngoogle.golang.org/grpc.(*Server).serveStreams.func1.2\n\t/home/sergey/go/pkg/mod/google.golang.org/grpc@v1.52.3/server.go:965"}
+{"level":"panic","ts":1674982366.473202,"caller":"app/main.go:34","msg":"LDAP Result Code 200 \"Network Error\": dial tcp: lookup ldap.it-college.ru: no such host","stacktrace":"main.main\n\t/home/sergey/Documents/SARS/ldap_service/cmd/app/main.go:34\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:250"}
+{"level":"info","ts":1674982372.9360735,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"debug","ts":1674982376.535614,"caller":"ldap/user.go:36","msg":"Prerequest"}
+{"level":"debug","ts":1674982376.5444095,"caller":"ldap/user.go:38","msg":"Afterrequest"}
+{"level":"info","ts":1674982376.5452023,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T13:52:56+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":14.781}
+{"level":"info","ts":1674982402.3052554,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674982485.0628202,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"debug","ts":1674982488.0506647,"caller":"ldap/user.go:36","msg":"Prerequest"}
+{"level":"debug","ts":1674982488.0597775,"caller":"ldap/user.go:38","msg":"Afterrequest"}
+{"level":"info","ts":1674982488.0622232,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T13:54:48+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":16.762}
+{"level":"info","ts":1674987512.7886982,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674987565.2392492,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1674990035.32523,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1674990055.7026196,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"debug","ts":1674990080.964835,"caller":"ldap/user.go:36","msg":"Prerequest"}
+{"level":"debug","ts":1674990080.9732225,"caller":"ldap/user.go:38","msg":"Afterrequest"}
+{"level":"info","ts":1674990080.974499,"caller":"zap/options.go:212","msg":"finished unary call with code OK","grpc.start_time":"2023-01-29T16:01:20+05:00","system":"grpc","span.kind":"server","grpc.service":"ldap.UserService","grpc.method":"GetUser","grpc.code":"OK","grpc.time_ms":14.131}
+{"level":"panic","ts":1675025504.5965087,"caller":"app/main.go:43","msg":"invalid parse port","stacktrace":"main.main\n\t/home/sergey/Documents/SARS/ldap_service/cmd/app/main.go:43\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:250"}
+{"level":"info","ts":1675025650.520003,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1675026746.3254533,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
+{"level":"info","ts":1675026751.319607,"caller":"app/main.go:56","msg":"Server Exited Properly"}
