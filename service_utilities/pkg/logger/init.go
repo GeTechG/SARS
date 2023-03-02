@@ -19,7 +19,7 @@ func InitLogger() error {
 
 	level, _ := zap.ParseAtomicLevel(os.Getenv("LOG_LEVEL"))
 
-	file, err := os.OpenFile("logs.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	file, err := os.OpenFile(os.Getenv("EX_PATH")+"/logs.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return err
 	}
@@ -31,7 +31,7 @@ func InitLogger() error {
 
 	logger = zap.New(core, zap.AddCaller(), zap.AddStacktrace(zapcore.ErrorLevel))
 	sugarLogger = logger.Sugar()
-	
+
 	return nil
 }
 
