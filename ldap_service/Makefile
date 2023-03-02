@@ -1,4 +1,4 @@
-export PATH := $(PATH):/usr/local/go/bin:/home/sergey/go/bin
+export PATH := $(PATH):/usr/local/go/bin:$(HOME)/go/bin
 
 PACKAGE := git.it-college.ru/i21s617/SARS/ldap_service/internal/proto
 
