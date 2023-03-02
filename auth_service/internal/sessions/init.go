@@ -2,9 +2,11 @@ package sessions
 
 import (
 	"database/sql"
+	"fmt"
 	"github.com/alexedwards/scs/mysqlstore"
 	"github.com/alexedwards/scs/v2"
 	_ "github.com/go-sql-driver/mysql"
+	"os"
 )
 
 var sessionManager *scs.SessionManager
@@ -12,7 +14,7 @@ var db *sql.DB
 
 func InitSessions() error {
 	var err error
-	db, err = sql.Open("mysql", "root:root@tcp(localhost:3306)/sars_sessions?parseTime=true")
+	db, err = sql.Open("mysql", fmt.Sprintf("root:root@tcp(localhost:%s)/sars_sessions?parseTime=true", os.Getenv("DB_PORT")))
 	if err != nil {
 		return err
 	}
