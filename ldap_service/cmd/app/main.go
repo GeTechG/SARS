@@ -9,19 +9,31 @@ import (
 	"go.uber.org/zap"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"syscall"
 	"time"
 )
 
 var log *zap.SugaredLogger
 
-func main() {
-	err := godotenv.Load()
+func loadEnv() {
+	ex, err := os.Executable()
 	if err != nil {
 		panic(err)
 	}
+	exPath := filepath.Dir(ex)
+	err = godotenv.Load(string(exPath) + `/.env`)
+	_ = os.Setenv("EX_PATH", exPath)
 
-	err = logger.InitLogger()
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+}
+
+func main() {
+	loadEnv()
+
+	err := logger.InitLogger()
 	if err != nil {
 		panic(err)
 	}

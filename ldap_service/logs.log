@@ -109,3 +109,4 @@
 {"level":"info","ts":1675025650.520003,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
 {"level":"info","ts":1675026746.3254533,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
 {"level":"info","ts":1675026751.319607,"caller":"app/main.go:56","msg":"Server Exited Properly"}
+{"level":"info","ts":1675026939.5503418,"caller":"app/main.go:46","msg":"Server started at http://0.0.0.0:9001"}
