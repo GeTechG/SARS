@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"git.it-college.ru/i21s617/SARS/auth_service/internal/grpc"
+	"git.it-college.ru/i21s617/SARS/auth_service/internal/grpc_client"
 	"git.it-college.ru/i21s617/SARS/auth_service/internal/server"
 	"git.it-college.ru/i21s617/SARS/auth_service/internal/sessions"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/logger"
@@ -56,7 +56,7 @@ func main() {
 		panic(err)
 	}
 
-	userServiceConnect, err := grpc.ConnectLDAPToServer()
+	userServiceConnect, err := grpc_client.ConnectLDAPToServer()
 	if err != nil {
 		panic(err)
 	}

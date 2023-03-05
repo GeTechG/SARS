@@ -2,9 +2,9 @@ package services
 
 import (
 	"context"
-	ldaps "git.it-college.ru/i21s617/SARS/ldap_service/internal/ldap"
-	ldappb "git.it-college.ru/i21s617/SARS/ldap_service/internal/proto/ldap"
-	"git.it-college.ru/i21s617/SARS/ldap_service/internal/proto/structs"
+	"git.it-college.ru/i21s617/SARS/ldap_service/internal/ldap_client"
+	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/ldap_service"
+	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/structs"
 	"github.com/go-ldap/ldap"
 	jsoniter "github.com/json-iterator/go"
 	"google.golang.org/grpc/codes"
@@ -34,27 +34,27 @@ func entryToUser(entry *ldap.Entry) *structs.User {
 }
 
 type UserService struct {
-	ldappb.UnimplementedUserServiceServer
+	ldap_service.UnimplementedUserServiceServer
 }
 
-func (s *UserService) GetUser(ctx context.Context, request *ldappb.GetUserRequest) (*ldappb.GetUserResponse, error) {
-	ldapUser, err := ldaps.GetService().GetUser(request.GetUid())
+func (s *UserService) GetUser(ctx context.Context, request *ldap_service.GetUserRequest) (*ldap_service.GetUserResponse, error) {
+	ldapUser, err := ldap_client.GetService().GetUser(request.GetUid())
 	if err != nil {
 		return nil, status.Error(codes.Aborted, err.Error())
 	}
 
 	user := entryToUser(ldapUser)
 
-	return &ldappb.GetUserResponse{
+	return &ldap_service.GetUserResponse{
 		User: user,
 	}, nil
 }
 
-func (s *UserService) Auth(ctx context.Context, request *ldappb.AuthUserRequest) (*ldappb.AuthUserResponse, error) {
-	entry, err := ldaps.GetService().Auth(request.GetUid(), request.GetPassword())
+func (s *UserService) Auth(ctx context.Context, request *ldap_service.AuthUserRequest) (*ldap_service.AuthUserResponse, error) {
+	entry, err := ldap_client.GetService().Auth(request.GetUid(), request.GetPassword())
 	if err != nil {
 		if ldap.IsErrorWithCode(err, ldap.LDAPResultInvalidCredentials) {
-			return &ldappb.AuthUserResponse{
+			return &ldap_service.AuthUserResponse{
 				Valid: false,
 				User:  nil,
 			}, nil
@@ -64,7 +64,7 @@ func (s *UserService) Auth(ctx context.Context, request *ldappb.AuthUserRequest)
 
 	user := entryToUser(entry)
 
-	return &ldappb.AuthUserResponse{
+	return &ldap_service.AuthUserResponse{
 		Valid: true,
 		User:  user,
 	}, nil

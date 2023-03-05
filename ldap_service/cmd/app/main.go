@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"git.it-college.ru/i21s617/SARS/ldap_service/internal/ldap"
+	"git.it-college.ru/i21s617/SARS/ldap_service/internal/ldap_client"
 	"git.it-college.ru/i21s617/SARS/ldap_service/internal/server"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/logger"
 	"github.com/joho/godotenv"
@@ -41,11 +41,11 @@ func main() {
 
 	log = logger.GetSugarLogger()
 
-	err = ldap.Init()
+	err = ldap_client.Init()
 	if err != nil {
 		log.Panic(err)
 	}
-	defer ldap.Shutdown()
+	defer ldap_client.Shutdown()
 
 	done := make(chan os.Signal, 1)
 	signal.Notify(done, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)

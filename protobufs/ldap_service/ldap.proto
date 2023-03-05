@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ldap;
+package ldap_service;
 
 import "structs/user.proto";
 

@@ -1,21 +1,21 @@
 package routes
 
 import (
-	"git.it-college.ru/i21s617/SARS/auth_service/internal/grpc"
-	"git.it-college.ru/i21s617/SARS/auth_service/internal/proto/ldap"
+	"git.it-college.ru/i21s617/SARS/auth_service/internal/grpc_client"
 	"git.it-college.ru/i21s617/SARS/auth_service/internal/sessions"
+	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/ldap_service"
 	"github.com/gin-gonic/gin"
 	"google.golang.org/protobuf/encoding/protojson"
 	"net/http"
 )
 
 func Auth(c *gin.Context) {
-	userRequest := &ldap.AuthUserRequest{}
+	userRequest := &ldap_service.AuthUserRequest{}
 	err := c.ShouldBindJSON(userRequest)
 	if err != nil {
 		_ = c.AbortWithError(http.StatusBadRequest, err)
 	}
-	auth, err := grpc.GetUserService().Auth(c, userRequest)
+	auth, err := grpc_client.GetUserService().Auth(c, userRequest)
 	if err != nil {
 		_ = c.AbortWithError(http.StatusInternalServerError, err)
 	}
