@@ -1,4 +1,4 @@
-export PATH := $(PATH):/usr/local/go/bin:$(HOME)/go/bin
+export PATH := $(PATH):/usr/local/go/bin:/home/i21s617/go/bin
 
 proto_compile:
 	cd ../service_utilities && make proto_compile
