@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../protobufs/.idea/probufs.iml" filepath="$PROJECT_DIR$/../protobufs/.idea/probufs.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/service_utilities.iml" filepath="$PROJECT_DIR$/.idea/service_utilities.iml" />
     </modules>
   </component>

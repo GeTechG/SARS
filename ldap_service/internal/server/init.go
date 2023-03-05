@@ -3,9 +3,9 @@ package server
 import (
 	"errors"
 	"fmt"
-	proto "git.it-college.ru/i21s617/SARS/ldap_service/internal/proto/ldap"
 	"git.it-college.ru/i21s617/SARS/ldap_service/internal/services"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/logger"
+	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/ldap_service"
 	"google.golang.org/grpc"
 	"net"
 	"net/http"
@@ -29,7 +29,7 @@ func RunServer() (*grpc.Server, error) {
 	grpcServer := grpc.NewServer()
 
 	userService := services.UserService{}
-	proto.RegisterUserServiceServer(grpcServer, &userService)
+	ldap_service.RegisterUserServiceServer(grpcServer, &userService)
 
 	go func() {
 		if err := grpcServer.Serve(lis); err != nil && err != http.ErrServerClosed {

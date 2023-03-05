@@ -1,13 +1,13 @@
-package grpc
+package grpc_client
 
 import (
-	"git.it-college.ru/i21s617/SARS/auth_service/internal/proto/ldap"
+	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/ldap_service"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"os"
 )
 
-var userServiceClient ldap.UserServiceClient
+var userServiceClient ldap_service.UserServiceClient
 
 func ConnectLDAPToServer() (*grpc.ClientConn, error) {
 	conn, err := grpc.Dial(os.Getenv("LDAP_ADDRESS"), grpc.WithTransportCredentials(insecure.NewCredentials()))
@@ -15,11 +15,11 @@ func ConnectLDAPToServer() (*grpc.ClientConn, error) {
 		return nil, err
 	}
 
-	userServiceClient = ldap.NewUserServiceClient(conn)
+	userServiceClient = ldap_service.NewUserServiceClient(conn)
 
 	return conn, nil
 }
 
-func GetUserService() ldap.UserServiceClient {
+func GetUserService() ldap_service.UserServiceClient {
 	return userServiceClient
 }
