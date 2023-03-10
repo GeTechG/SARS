@@ -23,7 +23,7 @@ func RunRestServer() (*http.Server, error) {
 
 	router.Use(cors.Default())
 
-	router.POST("/add_class", routes.AddClass)
+	router.POST("/add_classes", sessions.AuthMiddleware(routes.AddClasses))
 
 	addr := os.Getenv("HOST") + ":" + os.Getenv("REST_PORT")
 	srv := &http.Server{

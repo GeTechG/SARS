@@ -34,8 +34,12 @@ func Auth(c *gin.Context) {
 }
 
 func IsAuth(c *gin.Context) {
-	uid := sessions.GetSessions().Get(c.Request.Context(), "uid").(string)
-	userType := sessions.GetSessions().Get(c.Request.Context(), "userType").(string)
+	uid, isCast := sessions.GetSessions().Get(c.Request.Context(), "uid").(string)
+	userType, isCast := sessions.GetSessions().Get(c.Request.Context(), "userType").(string)
+	if !isCast {
+		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error:": "You are not authorized!"})
+		return
+	}
 
 	c.JSON(http.StatusOK, map[string]string{
 		"uid":      uid,

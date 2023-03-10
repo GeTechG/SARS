@@ -31,7 +31,7 @@ type AddClassesResponse struct {
 	Message *string `json:"message,omitempty"`
 }
 
-func AddClass(c *gin.Context) {
+func AddClasses(c *gin.Context) {
 	var classesRequest AddClassRequest
 	err := c.ShouldBindJSON(&classesRequest)
 	if err != nil {
