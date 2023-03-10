@@ -3,9 +3,9 @@ package server
 import (
 	"errors"
 	"fmt"
-	"git.it-college.ru/i21s617/SARS/ldap_service/internal/services"
+	"git.it-college.ru/i21s617/SARS/class_schedule_service/internal/grpc_services"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/logger"
-	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/ldap_service"
+	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/class_schedule_service"
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_zap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
 	"google.golang.org/grpc"
@@ -15,10 +15,10 @@ import (
 	"strconv"
 )
 
-func RunServer() (*grpc.Server, error) {
+func RunGrpcServer() (*grpc.Server, error) {
 	log := logger.GetSugarLogger()
 
-	port, err := strconv.Atoi(os.Getenv("PORT"))
+	port, err := strconv.Atoi(os.Getenv("GRPC_PORT"))
 	if err != nil {
 		return nil, errors.New("invalid parse port")
 	}
@@ -34,8 +34,8 @@ func RunServer() (*grpc.Server, error) {
 		grpc_zap.UnaryServerInterceptor(logger.GetLogger()),
 	)))
 
-	userService := services.UserService{}
-	ldap_service.RegisterUserServiceServer(grpcServer, &userService)
+	userService := grpc_services.ClassScheduleService{}
+	class_schedule_service.RegisterClassScheduleServiceServer(grpcServer, &userService)
 
 	go func() {
 		if err := grpcServer.Serve(lis); err != nil && err != http.ErrServerClosed {

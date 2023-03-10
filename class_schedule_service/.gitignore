@@ -1,0 +1,3 @@
+internal/sqlc/*
+main
+logs.log

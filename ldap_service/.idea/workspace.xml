@@ -5,7 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="665c4ef5-bde2-436c-a236-c96fc490c3d8" name="Changes" comment="[refactor] | move proto generation to service_utilities">
-      <change beforePath="$PROJECT_DIR$/../service_utilities/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../service_utilities/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/.idea/class_schedule_service.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/cmd/app/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/internal/clients/class_schedule_client.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/internal/db/init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/internal/grpc_services/class_schedule_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/internal/routes/class_routes.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/internal/server/grpc.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/internal/server/rest.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/internal/services/class.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/sql/query.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/sql/schema.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../class_schedule_service/sqlc.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../protobufs/class_schedule_service/class.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../protobufs/class_schedule_service/service.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../service_utilities/pkg/sessions/init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../service_utilities/pkg/time/date.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth_service/.env" beforeDir="false" afterPath="$PROJECT_DIR$/../auth_service/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth_service/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../auth_service/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth_service/cmd/app/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../auth_service/cmd/app/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth_service/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../auth_service/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth_service/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../auth_service/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth_service/internal/grpc_client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/../auth_service/internal/grpc_service_client/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth_service/internal/routes/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/../auth_service/internal/routes/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth_service/internal/routes/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/../auth_service/internal/routes/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth_service/internal/server/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/../auth_service/internal/server/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../auth_service/internal/sessions/init.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../protobufs/ldap_service/ldap.proto" beforeDir="false" afterPath="$PROJECT_DIR$/../protobufs/ldap_service/ldap_service.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../service_utilities/.idea/protoeditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../service_utilities/.idea/protoeditor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../service_utilities/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../service_utilities/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../service_utilities/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../service_utilities/go.mod" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,13 +82,30 @@
     "WebServerToolWindowFactoryState": "false",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/home/sergey/Documents/SARS/auth_service",
+    "last_opened_file_path": "/home/sergey/Documents/SARS/service_utilities",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
   <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="ldap_service" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="ldap_service" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
     <configuration name="run" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="run" workingDirectory="" arguments="">
         <envs />

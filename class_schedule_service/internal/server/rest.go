@@ -1,7 +1,7 @@
 package server
 
 import (
-	"git.it-college.ru/i21s617/SARS/auth_service/internal/routes"
+	"git.it-college.ru/i21s617/SARS/class_schedule_service/internal/routes"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/logger"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/sessions"
 	"github.com/gin-contrib/cors"
@@ -10,7 +10,7 @@ import (
 	"os"
 )
 
-func RunServer() (*http.Server, error) {
+func RunRestServer() (*http.Server, error) {
 	log := logger.GetSugarLogger()
 
 	gin.SetMode(gin.ReleaseMode)
@@ -23,11 +23,9 @@ func RunServer() (*http.Server, error) {
 
 	router.Use(cors.Default())
 
-	router.GET("/get_user/:uid", routes.GetUser)
-	router.POST("/auth", routes.Auth)
-	router.GET("/is_auth", routes.IsAuth)
+	router.POST("/add_class", routes.AddClass)
 
-	addr := os.Getenv("HOST") + ":" + os.Getenv("PORT")
+	addr := os.Getenv("HOST") + ":" + os.Getenv("REST_PORT")
 	srv := &http.Server{
 		Addr:    addr,
 		Handler: sessions.GetSessions().LoadAndSave(router),
