@@ -1,4 +1,4 @@
-package grpc_client
+package grpc_service_client
 
 import (
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/ldap_service"

@@ -10,6 +10,9 @@
         <ImportPathEntry>
           <option name="location" value="file://$PROJECT_DIR$/../protobufs" />
         </ImportPathEntry>
+        <ImportPathEntry>
+          <option name="location" value="file://$PROJECT_DIR$/../protobufs/class_schedule_service" />
+        </ImportPathEntry>
       </list>
     </option>
     <option name="descriptorPath" value="google/protobuf/descriptor.proto" />

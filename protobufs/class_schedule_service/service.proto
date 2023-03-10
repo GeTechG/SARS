@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package class_schedule_service;
+
+import "class_schedule_service/class.proto";
+
+message AddClassesRequest {
+  repeated Class classes = 1;
+  optional bool replace = 2;
+}
+
+message AddClassResponse {
+  bool error = 1;
+  optional string message = 2;
+}
+
+service ClassScheduleService {
+  rpc AddClasses(AddClassesRequest) returns (stream AddClassResponse);
+}

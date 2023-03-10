@@ -2,8 +2,9 @@ package main
 
 import (
 	"context"
-	"git.it-college.ru/i21s617/SARS/auth_service/internal/grpc_service_client"
-	"git.it-college.ru/i21s617/SARS/auth_service/internal/server"
+	"git.it-college.ru/i21s617/SARS/class_schedule_service/internal/clients"
+	"git.it-college.ru/i21s617/SARS/class_schedule_service/internal/db"
+	"git.it-college.ru/i21s617/SARS/class_schedule_service/internal/server"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/logger"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/sessions"
 	"github.com/joho/godotenv"
@@ -48,23 +49,36 @@ func main() {
 
 	log = logger.GetSugarLogger()
 
+	err = db.InitDB()
+	if err != nil {
+		return
+	}
+	defer db.CloseDB()
+
 	done := make(chan os.Signal)
 	signal.Notify(done, syscall.SIGINT, syscall.SIGTERM)
 
-	srv, err := server.RunServer()
+	grpcServer, err := server.RunGrpcServer()
 	if err != nil {
-		panic(err)
+		log.Panic(err)
 	}
 
-	userServiceConnect, err := grpc_service_client.ConnectLDAPToServer()
+	log.Infof("GRPC Server started at http://0.0.0.0:%s", os.Getenv("GRPC_PORT"))
+
+	classScheduleClient, err := clients.ConnectToClassScheduleServer()
 	if err != nil {
 		panic(err)
 	}
 	defer func() {
-		_ = userServiceConnect.Close()
+		_ = classScheduleClient.Close()
 	}()
 
-	log.Infof("Server started at http://%s", os.Getenv("HOST")+":"+os.Getenv("PORT"))
+	srv, err := server.RunRestServer()
+	if err != nil {
+		panic(err)
+	}
+
+	log.Infof("REST Server started at http://%s", os.Getenv("HOST")+":"+os.Getenv("REST_PORT"))
 	<-done
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
@@ -76,5 +90,6 @@ func main() {
 	if err := srv.Shutdown(ctx); err != nil {
 		log.Fatalf("Server Shutdown Failed:%+v", err)
 	}
+	grpcServer.GracefulStop()
 	log.Info("Shutdown Server ...")
 }
