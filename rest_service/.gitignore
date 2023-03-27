@@ -79,3 +79,4 @@ fabric.properties
 internal/proto/*
 logs.log
 main
+.idea/
