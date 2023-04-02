@@ -7,5 +7,6 @@ proto_compile:
 	python3 ../protobuf_command_gen/gen.py --proto_path ../protobufs \
 	--out_path ../service_utilities/pkg/proto \
 	--go_package $(PACKAGE) \
-	ldap_service/ldap_service.proto structs/user.proto \
+	ldap_service/user.proto ldap_service/group.proto \
+	structs/user.proto \
 	class_schedule_service/class.proto class_schedule_service/service.proto

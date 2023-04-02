@@ -35,7 +35,9 @@ func RunServer() (*grpc.Server, error) {
 	)))
 
 	userService := services.UserService{}
+	groupService := services.GroupService{}
 	ldap_service.RegisterUserServiceServer(grpcServer, &userService)
+	ldap_service.RegisterGroupServer(grpcServer, &groupService)
 
 	go func() {
 		if err := grpcServer.Serve(lis); err != nil && err != http.ErrServerClosed {

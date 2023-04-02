@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package ldap_service;
+
+import "google/protobuf/empty.proto";
+
+message GetListGroupsResponse {
+  repeated string groups = 1;
+}
+
+message GetGroupMembersRequest {
+  string groupName = 1;
+}
+
+message GetGroupMembersResponse {
+  repeated string members = 1;
+}
+
+message IsGroupExistsRequest {
+  string group = 1;
+}
+
+message IsGroupExistsResponse {
+  bool exists = 1;
+}
+
+service Group {
+  rpc GetListGroups(google.protobuf.Empty) returns (GetListGroupsResponse);
+  rpc GetGroupMembers(GetGroupMembersRequest) returns (GetGroupMembersResponse);
+  rpc IsGroupExists(IsGroupExistsRequest) returns (IsGroupExistsResponse);
+}
