@@ -1,14 +1,14 @@
 package routes
 
 import (
-	"git.it-college.ru/i21s617/SARS/auth_service/internal/grpc_service_client"
+	"git.it-college.ru/i21s617/SARS/rest_service/internal/clients"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/ldap_service"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 func GetUser(c *gin.Context) {
-	user, err := grpc_service_client.GetUserService().GetUser(c, &ldap_service.GetUserRequest{
+	user, err := clients.GetUserService().GetUser(c, &ldap_service.GetUserRequest{
 		Uid: c.Param("uid"),
 	})
 	if err != nil {

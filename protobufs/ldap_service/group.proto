@@ -24,7 +24,7 @@ message IsGroupExistsResponse {
   bool exists = 1;
 }
 
-service Group {
+service GroupService {
   rpc GetListGroups(google.protobuf.Empty) returns (GetListGroupsResponse);
   rpc GetGroupMembers(GetGroupMembersRequest) returns (GetGroupMembersResponse);
   rpc IsGroupExists(IsGroupExistsRequest) returns (IsGroupExistsResponse);

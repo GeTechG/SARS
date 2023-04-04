@@ -55,7 +55,7 @@ func main() {
 		log.Panic(err)
 	}
 
-	log.Infof("Server started at http://0.0.0.0:%s", os.Getenv("PORT"))
+	log.Infof("Server started at http://%s:%s", os.Getenv("HOST"), os.Getenv("PORT"))
 	<-done
 
 	_, cancel := context.WithTimeout(context.Background(), 5*time.Second)

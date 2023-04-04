@@ -23,7 +23,7 @@ func RunServer() (*grpc.Server, error) {
 		return nil, errors.New("invalid parse port")
 	}
 
-	lis, err := net.Listen("tcp", fmt.Sprintf("0.0.0.0:%d", port))
+	lis, err := net.Listen("tcp", fmt.Sprintf("%s:%d", os.Getenv("HOST"), port))
 	if err != nil {
 		return nil, fmt.Errorf("failed to listen: %v", err)
 	}
@@ -37,7 +37,7 @@ func RunServer() (*grpc.Server, error) {
 	userService := services.UserService{}
 	groupService := services.GroupService{}
 	ldap_service.RegisterUserServiceServer(grpcServer, &userService)
-	ldap_service.RegisterGroupServer(grpcServer, &groupService)
+	ldap_service.RegisterGroupServiceServer(grpcServer, &groupService)
 
 	go func() {
 		if err := grpcServer.Serve(lis); err != nil && err != http.ErrServerClosed {

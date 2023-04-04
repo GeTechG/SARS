@@ -8,7 +8,7 @@ import (
 )
 
 type GroupService struct {
-	ldap_service.UnimplementedGroupServer
+	ldap_service.UnimplementedGroupServiceServer
 }
 
 func (GroupService) GetListGroups(ctx context.Context, empty *empty.Empty) (*ldap_service.GetListGroupsResponse, error) {

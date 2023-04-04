@@ -1,10 +1,14 @@
 package routes
 
 import (
-	"git.it-college.ru/i21s617/SARS/class_schedule_service/internal/clients"
+	"context"
+	"git.it-college.ru/i21s617/SARS/rest_service/internal/clients"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/class_schedule_service"
+	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/ldap_service"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/time"
 	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
+	"github.com/go-playground/validator/v10"
 	"google.golang.org/protobuf/types/known/timestamppb"
 	"io"
 	"log"
@@ -13,17 +17,33 @@ import (
 )
 
 type ClassRequest struct {
-	Date         time.Date `json:"date"`
-	Order        int32     `json:"order"`
-	Subject      uint32    `json:"subject"`
-	Teacher      string    `json:"teacher"`
+	Date         time.Date `json:"date" binding:"required"`
+	Order        int32     `json:"order" binding:"required"`
+	Subject      int32     `json:"subject" binding:"required"`
+	Teacher      string    `json:"teacher" binding:"required"`
 	Group        string    `json:"group"`
-	ClassSubject *string   `json:"class_subject"`
+	ClassSubject *string   `json:"class_subject,omitempty" binding:"-"`
 }
 
 type AddClassRequest struct {
-	Classes []*ClassRequest `json:"classes"`
-	Replace *bool           `json:"replace,omitempty"`
+	Classes []*ClassRequest `json:"classes" binding:"required"`
+	Replace *bool           `json:"replace,omitempty" binding:"-"`
+}
+
+func AddClassRequestValidation(ctx context.Context, sl validator.StructLevel) {
+	addClassRequest, ok := sl.Current().Interface().(AddClassRequest)
+	if ok {
+		for _, class := range addClassRequest.Classes {
+			exists, err := clients.GetGroupServiceClient().IsGroupExists(ctx, &ldap_service.IsGroupExistsRequest{Group: class.Group})
+			if err != nil {
+				sl.ReportError(class.Group, "Group", "group", err.Error(), "")
+				continue
+			}
+			if !exists.GetExists() {
+				sl.ReportError(class.Group, "Group", "group", "Invalid group name", "")
+			}
+		}
+	}
 }
 
 type AddClassesResponse struct {
@@ -33,9 +53,17 @@ type AddClassesResponse struct {
 
 func AddClasses(c *gin.Context) {
 	var classesRequest AddClassRequest
-	err := c.ShouldBindJSON(&classesRequest)
+	err := c.ShouldBindWith(&classesRequest, binding.JSON)
 	if err != nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error:": err.Error()})
+		if errors, ok := err.(validator.ValidationErrors); ok {
+			var fieldErrors = make([]string, 0, len(errors))
+			for _, fieldError := range errors {
+				fieldErrors = append(fieldErrors, fieldError.Error())
+			}
+			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"errors:": fieldErrors})
+		} else {
+			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error:": err.Error()})
+		}
 		return
 	}
 

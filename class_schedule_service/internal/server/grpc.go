@@ -18,7 +18,7 @@ import (
 func RunGrpcServer() (*grpc.Server, error) {
 	log := logger.GetSugarLogger()
 
-	port, err := strconv.Atoi(os.Getenv("GRPC_PORT"))
+	port, err := strconv.Atoi(os.Getenv("PORT"))
 	if err != nil {
 		return nil, errors.New("invalid parse port")
 	}

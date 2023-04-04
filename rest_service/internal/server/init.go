@@ -1,11 +1,13 @@
 package server
 
 import (
-	"git.it-college.ru/i21s617/SARS/auth_service/internal/routes"
+	"git.it-college.ru/i21s617/SARS/rest_service/internal/routes"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/logger"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/sessions"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
+	"github.com/go-playground/validator/v10"
 	"net/http"
 	"os"
 )
@@ -16,6 +18,10 @@ func RunServer() (*http.Server, error) {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.New()
 
+	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
+		v.RegisterStructValidationCtx(routes.AddClassRequestValidation, routes.AddClassRequest{})
+	}
+
 	err := logger.ConnectToGin(router)
 	if err != nil {
 		return nil, err
@@ -23,9 +29,17 @@ func RunServer() (*http.Server, error) {
 
 	router.Use(cors.Default())
 
-	router.GET("/get_user/:uid", routes.GetUser)
-	router.POST("/auth", routes.Auth)
-	router.GET("/is_auth", routes.IsAuth)
+	authGroup := router.Group("/auth")
+	{
+		authGroup.GET("/get_user/:uid", routes.GetUser)
+		authGroup.POST("/auth", routes.Auth)
+		authGroup.GET("/is_auth", routes.IsAuth)
+	}
+
+	classScheduleGroup := router.Group("/class_schedule")
+	{
+		classScheduleGroup.POST("/add_classes", sessions.AuthMiddleware(routes.AddClasses))
+	}
 
 	addr := os.Getenv("HOST") + ":" + os.Getenv("PORT")
 	srv := &http.Server{

@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"git.it-college.ru/i21s617/SARS/auth_service/internal/grpc_service_client"
-	"git.it-college.ru/i21s617/SARS/auth_service/internal/server"
+	"git.it-college.ru/i21s617/SARS/rest_service/internal/clients"
+	"git.it-college.ru/i21s617/SARS/rest_service/internal/server"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/logger"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/sessions"
 	"github.com/joho/godotenv"
@@ -56,12 +56,20 @@ func main() {
 		panic(err)
 	}
 
-	userServiceConnect, err := grpc_service_client.ConnectLDAPToServer()
+	userServiceConnect, err := clients.ConnectLDAPToServer()
 	if err != nil {
 		panic(err)
 	}
 	defer func() {
 		_ = userServiceConnect.Close()
+	}()
+
+	classScheduleClient, err := clients.ConnectToClassScheduleServer()
+	if err != nil {
+		panic(err)
+	}
+	defer func() {
+		_ = classScheduleClient.Close()
 	}()
 
 	log.Infof("Server started at http://%s", os.Getenv("HOST")+":"+os.Getenv("PORT"))

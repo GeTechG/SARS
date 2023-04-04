@@ -8,7 +8,7 @@ message Class {
   optional uint64 id = 1;
   google.protobuf.Timestamp date = 2;
   int32 order = 3;
-  uint32 subject = 4;
+  int32 subject = 4;
   string teacher = 5;
   string group = 6;
   optional string classSubject = 7;
