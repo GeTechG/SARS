@@ -1,8 +1,10 @@
 package grpc_services
 
 import (
+	"context"
 	"git.it-college.ru/i21s617/SARS/class_schedule_service/internal/services"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/class_schedule_service"
+	"github.com/golang/protobuf/ptypes/empty"
 )
 
 type ClassScheduleService struct {
@@ -28,4 +30,12 @@ func (ClassScheduleService) AddClasses(request *class_schedule_service.AddClasse
 	}
 
 	return nil
+}
+
+func (ClassScheduleService) GetClasses(ctx context.Context, empty *empty.Empty) (*class_schedule_service.GetClassesResponse, error) {
+	classes, err := services.GetClasses()
+	if err != nil {
+		return nil, err
+	}
+	return &class_schedule_service.GetClassesResponse{Classes: classes}, nil
 }

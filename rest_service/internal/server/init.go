@@ -39,6 +39,7 @@ func RunServer() (*http.Server, error) {
 	classScheduleGroup := router.Group("/class_schedule")
 	{
 		classScheduleGroup.POST("/add_classes", sessions.AuthMiddleware(routes.AddClasses))
+		classScheduleGroup.GET("/get_classes", sessions.AuthMiddleware(routes.GetClasses))
 	}
 
 	addr := os.Getenv("HOST") + ":" + os.Getenv("PORT")

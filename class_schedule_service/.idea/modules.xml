@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/class_schedule_service.iml" filepath="$PROJECT_DIR$/.idea/class_schedule_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../protobufs/.idea/probufs.iml" filepath="$PROJECT_DIR$/../protobufs/.idea/probufs.iml" />
     </modules>
   </component>
 </project>

@@ -7,3 +7,7 @@ VALUES(?, ?, ?, ?, ?, ?);
 REPLACE classes
 (`date`, `order`, subject, teacher, `group`, class_subject)
 VALUES(?, ?, ?, ?, ?, ?);
+
+-- name: GetClasses :many
+SELECT id, `date`, `order`, subject, teacher, `group`, class_subject
+FROM classes;

@@ -9,6 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
+	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/protobuf/types/known/timestamppb"
 	"io"
 	"log"
@@ -28,6 +29,10 @@ type ClassRequest struct {
 type AddClassRequest struct {
 	Classes []*ClassRequest `json:"classes" binding:"required"`
 	Replace *bool           `json:"replace,omitempty" binding:"-"`
+}
+
+type ClassResponse struct {
+	ClassRequest
 }
 
 func AddClassRequestValidation(ctx context.Context, sl validator.StructLevel) {
@@ -108,6 +113,31 @@ func AddClasses(c *gin.Context) {
 		}
 	}()
 	<-waitc
+
+	c.JSON(http.StatusOK, response)
+}
+
+func GetClasses(c *gin.Context) {
+	grpcResponse, err := clients.GetClassScheduleClient().GetClasses(c, &empty.Empty{})
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error:": err.Error()})
+		return
+	}
+
+	var response = make([]*ClassResponse, 0, len(grpcResponse.Classes))
+
+	for _, c := range grpcResponse.Classes {
+		response = append(response, &ClassResponse{
+			ClassRequest{
+				Date:         time.Date(c.GetDate().AsTime()),
+				Order:        c.GetOrder(),
+				Subject:      c.GetSubject(),
+				Teacher:      c.GetTeacher(),
+				Group:        c.GetGroup(),
+				ClassSubject: c.ClassSubject,
+			},
+		})
+	}
 
 	c.JSON(http.StatusOK, response)
 }
