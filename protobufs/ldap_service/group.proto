@@ -9,7 +9,7 @@ message GetListGroupsResponse {
 }
 
 message GetGroupMembersRequest {
-  string groupName = 1;
+  string group_name = 1;
 }
 
 message GetGroupMembersResponse {

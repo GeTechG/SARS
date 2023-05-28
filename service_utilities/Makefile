@@ -9,4 +9,4 @@ proto_compile:
 	--go_package $(PACKAGE) \
 	ldap_service/user.proto ldap_service/group.proto \
 	structs/user.proto \
-	class_schedule_service/class.proto class_schedule_service/service.proto
+	class_schedule_service/class.proto class_schedule_service/attendance.proto class_schedule_service/service.proto

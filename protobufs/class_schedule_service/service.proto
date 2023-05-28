@@ -3,6 +3,7 @@ syntax = "proto3";
 package class_schedule_service;
 
 import "class_schedule_service/class.proto";
+import "class_schedule_service/attendance.proto";
 import "google/protobuf/empty.proto";
 
 message AddClassesRequest {
@@ -15,11 +16,37 @@ message AddClassResponse {
   optional string message = 2;
 }
 
+message GetClassRequest {
+  int64 class_id = 1;
+}
+
 message GetClassesResponse {
   repeated Class classes = 1;
 }
 
 service ClassScheduleService {
   rpc AddClasses(AddClassesRequest) returns (stream AddClassResponse);
+  rpc GetClass(GetClassRequest) returns (Class);
   rpc GetClasses(google.protobuf.Empty) returns (GetClassesResponse);
+}
+
+message GetAttendanceRequest {
+  int64 class_id = 1;
+}
+
+message GetAttendanceResponse {
+  repeated Attendance attendances = 1;
+}
+
+message SetAttendanceRequest {
+  repeated Attendance attendances = 1;
+}
+
+message SetAttendanceResponse {
+  repeated string errors = 1;
+}
+
+service AttendanceService {
+  rpc GetAttendance(GetAttendanceRequest) returns (GetAttendanceResponse);
+  rpc SetAttendance(SetAttendanceRequest) returns (SetAttendanceResponse);
 }

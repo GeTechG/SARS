@@ -8,6 +8,7 @@ import (
 )
 
 var classScheduleClient class_schedule_service.ClassScheduleServiceClient
+var attendanceServiceClient class_schedule_service.AttendanceServiceClient
 
 func ConnectToClassScheduleServer() (*grpc.ClientConn, error) {
 	conn, err := grpc.Dial(os.Getenv("CLASS_SCHEDULE_ADDRESS"), grpc.WithTransportCredentials(insecure.NewCredentials()))
@@ -16,10 +17,15 @@ func ConnectToClassScheduleServer() (*grpc.ClientConn, error) {
 	}
 
 	classScheduleClient = class_schedule_service.NewClassScheduleServiceClient(conn)
+	attendanceServiceClient = class_schedule_service.NewAttendanceServiceClient(conn)
 
 	return conn, nil
 }
 
 func GetClassScheduleClient() class_schedule_service.ClassScheduleServiceClient {
 	return classScheduleClient
+}
+
+func GetAttendanceServiceClient() class_schedule_service.AttendanceServiceClient {
+	return attendanceServiceClient
 }

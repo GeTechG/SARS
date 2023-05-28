@@ -33,7 +33,7 @@ type AddClassRequest struct {
 
 type ClassResponse struct {
 	ClassRequest
-	Id uint64 `json:"id"`
+	Id int64 `json:"id"`
 }
 
 func AddClassRequestValidation(ctx context.Context, sl validator.StructLevel) {
@@ -90,7 +90,7 @@ func AddClasses(c *gin.Context) {
 		Replace: classesRequest.Replace,
 	})
 	if err != nil {
-		_ = c.Error(err)
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	}
 	waitc := make(chan struct{})
 

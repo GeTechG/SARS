@@ -39,3 +39,11 @@ func (ClassScheduleService) GetClasses(ctx context.Context, empty *empty.Empty) 
 	}
 	return &class_schedule_service.GetClassesResponse{Classes: classes}, nil
 }
+
+func (ClassScheduleService) GetClass(ctx context.Context, request *class_schedule_service.GetClassRequest) (*class_schedule_service.Class, error) {
+	class, err := services.GetClass(request.GetClassId())
+	if err != nil {
+		return nil, err
+	}
+	return class, nil
+}

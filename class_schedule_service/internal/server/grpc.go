@@ -35,7 +35,9 @@ func RunGrpcServer() (*grpc.Server, error) {
 	)))
 
 	userService := grpc_services.ClassScheduleService{}
+	attendanceService := grpc_services.AttendanceService{}
 	class_schedule_service.RegisterClassScheduleServiceServer(grpcServer, &userService)
+	class_schedule_service.RegisterAttendanceServiceServer(grpcServer, &attendanceService)
 
 	go func() {
 		if err := grpcServer.Serve(lis); err != nil && err != http.ErrServerClosed {

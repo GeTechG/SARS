@@ -3,6 +3,7 @@ package server
 import (
 	"git.it-college.ru/i21s617/SARS/rest_service/internal/routes"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/logger"
+	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/proto/class_schedule_service"
 	"git.it-college.ru/i21s617/SARS/service_utilities/pkg/sessions"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -21,6 +22,7 @@ func RunServer() (*http.Server, error) {
 
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
 		v.RegisterStructValidationCtx(routes.AddClassRequestValidation, routes.AddClassRequest{})
+		v.RegisterStructValidationCtx(routes.SetAttendancesValidation, class_schedule_service.Attendance{})
 	}
 
 	err := logger.ConnectToGin(router)
@@ -58,6 +60,12 @@ func RunServer() (*http.Server, error) {
 	{
 		classScheduleGroup.POST("/add_classes", sessions.AuthMiddleware(routes.AddClasses))
 		classScheduleGroup.GET("/get_classes", sessions.AuthMiddleware(routes.GetClasses))
+	}
+
+	attendanceGroup := router.Group("/attendance")
+	{
+		attendanceGroup.GET("/get/:class_id", sessions.AuthMiddleware(routes.GetAttendances))
+		attendanceGroup.POST("/set", sessions.AuthMiddleware(routes.SetAttendances))
 	}
 
 	addr := os.Getenv("HOST") + ":" + os.Getenv("PORT")

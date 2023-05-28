@@ -53,6 +53,7 @@ func GetClasses() ([]*class_schedule_service.Class, error) {
 	classespb := make([]*class_schedule_service.Class, 0, len(classes))
 	for _, class := range classes {
 		classespb = append(classespb, &class_schedule_service.Class{
+			Id:           &class.ID,
 			Date:         timestamppb.New(class.Date),
 			Order:        class.Order,
 			Subject:      class.Subject,
@@ -63,4 +64,21 @@ func GetClasses() ([]*class_schedule_service.Class, error) {
 	}
 
 	return classespb, nil
+}
+
+func GetClass(classId int64) (*class_schedule_service.Class, error) {
+	class, err := db.GetQueries().GetClass(context.Background(), classId)
+	if err != nil {
+		return nil, err
+	}
+
+	return &class_schedule_service.Class{
+		Id:           &class.ID,
+		Date:         timestamppb.New(class.Date),
+		Order:        class.Order,
+		Subject:      class.Subject,
+		Teacher:      class.Teacher,
+		Group:        class.Group,
+		ClassSubject: &class.ClassSubject.String,
+	}, nil
 }
