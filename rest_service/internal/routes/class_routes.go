@@ -33,6 +33,7 @@ type AddClassRequest struct {
 
 type ClassResponse struct {
 	ClassRequest
+	Id uint64 `json:"id"`
 }
 
 func AddClassRequestValidation(ctx context.Context, sl validator.StructLevel) {
@@ -128,7 +129,7 @@ func GetClasses(c *gin.Context) {
 
 	for _, c := range grpcResponse.Classes {
 		response = append(response, &ClassResponse{
-			ClassRequest{
+			ClassRequest: ClassRequest{
 				Date:         time.Date(c.GetDate().AsTime()),
 				Order:        c.GetOrder(),
 				Subject:      c.GetSubject(),
@@ -136,6 +137,7 @@ func GetClasses(c *gin.Context) {
 				Group:        c.GetGroup(),
 				ClassSubject: c.ClassSubject,
 			},
+			Id: c.GetId(),
 		})
 	}
 

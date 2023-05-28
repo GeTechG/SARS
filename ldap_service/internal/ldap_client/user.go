@@ -6,9 +6,10 @@ import (
 	"github.com/go-ldap/ldap"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"strings"
 )
 
-func (s *Service) GetUser(uid string) (*ldap.Entry, error) {
+func (s *Service) GetUsers(uids []string) ([]*ldap.Entry, error) {
 	log := logger.GetSugarLogger()
 
 	errChan := make(chan error)
@@ -24,6 +25,11 @@ func (s *Service) GetUser(uid string) (*ldap.Entry, error) {
 		log.Error(err)
 	}
 
+	var filterUids = make([]string, 0, len(uids))
+	for _, uid := range uids {
+		filterUids = append(filterUids, fmt.Sprintf("(uid=%s)", uid))
+	}
+
 	request := ldap.NewSearchRequest(
 		"dc=it-college,dc=ru",
 		ldap.ScopeWholeSubtree,
@@ -31,7 +37,7 @@ func (s *Service) GetUser(uid string) (*ldap.Entry, error) {
 		0,
 		0,
 		false,
-		fmt.Sprintf("(uid=%s)", uid),
+		fmt.Sprintf("(|%s)", strings.Join(filterUids, "")),
 		[]string{},
 		nil,
 	)
@@ -42,18 +48,19 @@ func (s *Service) GetUser(uid string) (*ldap.Entry, error) {
 	}
 
 	if len(result.Entries) == 0 {
-		return nil, status.Error(codes.NotFound, "Not found received uid")
+		return nil, status.Error(codes.NotFound, "Not found received uids")
 	}
 
-	return result.Entries[0], nil
+	return result.Entries, nil
 }
 
 func (s *Service) Auth(uid string, password string) (*ldap.Entry, error) {
-	user, err := s.GetUser(uid)
+	users, err := s.GetUsers([]string{uid})
 	if err != nil {
 		return nil, err
 	}
 
+	user := users[0]
 	err = s.connect.Bind(user.DN, password)
 	if err != nil {
 		return nil, err

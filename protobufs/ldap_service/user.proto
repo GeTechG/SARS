@@ -4,12 +4,12 @@ package ldap_service;
 
 import "structs/user.proto";
 
-message GetUserRequest {
-  string uid = 1;
+message GetUsersRequest {
+  repeated string uids = 1;
 }
 
-message GetUserResponse {
-  structs.User user = 1;
+message GetUsersResponse {
+  repeated structs.User users = 1;
 }
 
 message AuthUserRequest {
@@ -23,6 +23,6 @@ message AuthUserResponse {
 }
 
 service UserService {
-  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse);
   rpc Auth(AuthUserRequest) returns (AuthUserResponse);
 }

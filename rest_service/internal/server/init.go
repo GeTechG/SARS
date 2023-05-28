@@ -40,9 +40,18 @@ func RunServer() (*http.Server, error) {
 
 	authGroup := router.Group("/auth")
 	{
-		authGroup.GET("/get_user/:uid", routes.GetUser)
 		authGroup.POST("/auth", routes.Auth)
 		authGroup.GET("/is_auth", routes.IsAuth)
+	}
+
+	userGroup := router.Group("/user")
+	{
+		userGroup.POST("/get", routes.GetUsers)
+	}
+
+	groupGroup := router.Group("/group")
+	{
+		groupGroup.GET("/members/:name", routes.GetMembers)
 	}
 
 	classScheduleGroup := router.Group("/class_schedule")

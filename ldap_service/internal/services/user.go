@@ -37,16 +37,19 @@ type UserService struct {
 	ldap_service.UnimplementedUserServiceServer
 }
 
-func (s *UserService) GetUser(ctx context.Context, request *ldap_service.GetUserRequest) (*ldap_service.GetUserResponse, error) {
-	ldapUser, err := ldap_client.GetService().GetUser(request.GetUid())
+func (s *UserService) GetUsers(ctx context.Context, request *ldap_service.GetUsersRequest) (*ldap_service.GetUsersResponse, error) {
+	ldapUsers, err := ldap_client.GetService().GetUsers(request.GetUids())
 	if err != nil {
 		return nil, status.Error(codes.Aborted, err.Error())
 	}
 
-	user := entryToUser(ldapUser)
+	var users = make([]*structs.User, 0, len(ldapUsers))
+	for _, ldapUser := range ldapUsers {
+		users = append(users, entryToUser(ldapUser))
+	}
 
-	return &ldap_service.GetUserResponse{
-		User: user,
+	return &ldap_service.GetUsersResponse{
+		Users: users,
 	}, nil
 }
 

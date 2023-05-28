@@ -7,14 +7,21 @@ import (
 	"net/http"
 )
 
-func GetUser(c *gin.Context) {
-	user, err := clients.GetUserService().GetUser(c, &ldap_service.GetUserRequest{
-		Uid: c.Param("uid"),
-	})
+func GetUsers(c *gin.Context) {
+	var uids []string
+	err := c.ShouldBindJSON(&uids)
 	if err != nil {
-		_ = c.AbortWithError(http.StatusInternalServerError, err)
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, user.User)
+	response, err := clients.GetUserService().GetUsers(c, &ldap_service.GetUsersRequest{
+		Uids: uids,
+	})
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, response.Users)
 }
