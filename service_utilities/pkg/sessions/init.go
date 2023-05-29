@@ -5,6 +5,7 @@ import (
 	"github.com/alexedwards/scs/mysqlstore"
 	"github.com/alexedwards/scs/v2"
 	_ "github.com/go-sql-driver/mysql"
+	"net/http"
 	"os"
 )
 
@@ -19,6 +20,8 @@ func InitSessions() error {
 	}
 
 	sessionManager = scs.New()
+	sessionManager.Cookie.Secure = false
+	sessionManager.Cookie.SameSite = http.SameSiteNoneMode
 	sessionManager.Store = mysqlstore.New(db)
 	return nil
 }
