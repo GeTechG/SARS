@@ -52,14 +52,16 @@ func GetClasses() ([]*class_schedule_service.Class, error) {
 	}
 	classespb := make([]*class_schedule_service.Class, 0, len(classes))
 	for _, class := range classes {
+		id := class.ID
+		classSubject := class.ClassSubject.String
 		classespb = append(classespb, &class_schedule_service.Class{
-			Id:           &class.ID,
+			Id:           &id,
 			Date:         timestamppb.New(class.Date),
 			Order:        class.Order,
 			Subject:      class.Subject,
 			Teacher:      class.Teacher,
 			Group:        class.Group,
-			ClassSubject: &class.ClassSubject.String,
+			ClassSubject: &classSubject,
 		})
 	}
 
