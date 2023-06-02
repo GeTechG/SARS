@@ -1,5 +1,5 @@
 <template>
-  <router-view/>
+  <router-view class="font-family-montserrat"/>
 </template>
 
 <style>
@@ -22,5 +22,9 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.font-family-montserrat {
+  font-family: 'Montserrat', sans-serif;
 }
 </style>
