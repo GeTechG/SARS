@@ -8,3 +8,4 @@ run-services:
 	systemctl restart sars_rest_service.service
 	systemctl restart sars_ldap_service.service
 	systemctl restart sars_class_schedule_service.service
+	systemctl restart sars_frontend.service
